@@ -1,0 +1,44 @@
+{%extends "partials.html"%}
+{%block content%}
+<br><br>
+
+<div class="container">
+<div class="row">
+    <h4 class="text-center">FOOD ITEMS</h4>
+    <br><br>
+    {%if foods%}
+    {%for i in foods%}
+
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <img src="{{i.food_image.url}}" alt="" height="200vw" width='200vw'>
+                <h5 class="card-title">{{i.food_name}}</h5>
+                
+                <p class="card-text">{{i.food_description}}</p>
+                <button class="btn btn-info">{{i.food_price}} INR</span></button>
+                <br>
+                <br>
+                <form action="{%url 'addToCart' i.id%}" method="POST">
+                    {%csrf_token%}
+                    <button class="btn btn-outline-danger">ADD TO CART</span></button>
+
+                </form>
+
+                
+                
+                </div>
+            </div>
+        </div>
+
+        <style>
+
+            .btn-info{
+                color:white;
+            }
+        </style>
+        {%endfor%}
+        {%endif%}
+</div>
+</div>
+{%endblock%}

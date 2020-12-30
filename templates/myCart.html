@@ -1,0 +1,31 @@
+{%extends 'partials.html'%}
+{%block content%}
+<br>
+<div class="container">
+    <div class="text-end">
+  <a href="{%url 'checkout'%}">  <button class="btn btn-outline-danger"> CHECKOUT</button></a>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">NAME</th>
+        <th scope="col">PRICE</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+          {%if cartItems%}
+          {%for i in cartItems%}
+          <tr>
+        <td>{{i.food_name}}</td>
+        <td>{{i.food_price}}</td>
+    </tr>
+        {%endfor%}
+        {%endif%}
+     
+     
+    </tbody>
+  </table>
+</div>
+{%endblock%}
